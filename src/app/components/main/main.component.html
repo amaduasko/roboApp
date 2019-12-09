@@ -1,0 +1,12 @@
+<div class="content">
+  <div>
+    <label
+      >name:
+      <input type="text" [formControl]="name" placeholder="name" />
+    </label>
+    <button type="button" (click)="getRobot(name.value)">fetch</button>
+  </div>
+  <div class="view-container">
+    <img alt="{{ name.value }} robot" [src]="imageSource" />
+  </div>
+</div>
