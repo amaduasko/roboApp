@@ -1,12 +1,41 @@
 <div class="content">
-  <div>
-    <label
-      >name:
-      <input type="text" [formControl]="name" placeholder="name" />
-    </label>
-    <button type="button" (click)="getRobot(name.value)">fetch</button>
-  </div>
+  <form [formGroup]="robotForm" (ngSubmit)="getRobot(robotForm.value)">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" type="text" formControlName="name" placeholder="name" />
+    </div>
+    <div>
+      <label for="robotWidth">Width:</label>
+      <input
+        class="mesure-input"
+        id="robotWidth"
+        type="text"
+        formControlName="robotWidth"
+        placeholder="400"
+      />
+      <label for="robotWidth">px</label>
+    </div>
+    <div>
+      <label for="robotHeight">Height:</label>
+      <input
+        class="mesure-input"
+        id="robotHeight"
+        type="text"
+        formControlName="robotHeight"
+        placeholder="400"
+      />
+      <label for="robotHeight">px</label>
+    </div>
+    <button type="submit">fetch</button>
+  </form>
   <div class="view-container">
-    <img alt="{{ name.value }} robot" [src]="imageSource" />
+    <img
+      alt="{{ robotForm.value.name ? robotForm.value.name : 'some' }} robot"
+      [src]="imageSource"
+    />
+  </div>
+  <div class="link-container">
+    <a href="http://www.github.com/amaduasko" target="_blank">github</a>
+    <a href="http://www.askodev.com" target="_blank">askodev</a>
   </div>
 </div>
