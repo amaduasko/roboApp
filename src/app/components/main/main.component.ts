@@ -12,18 +12,19 @@ export class MainComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {
     this.robotForm = this.formBuilder.group({
       name: "ironman",
+      robotType: "set1",
       robotWidth: 400,
       robotHeight: 400
     });
   }
 
   getRobot(info: Robot): void {
+    console.log(info);
     this.imageSource = `https://robohash.org/${
       info.name ? info.name : "ironman"
-    }.png?
-    size=${info.robotWidth ? info.robotWidth : 400}x${
-      info.robotHeight ? info.robotHeight : 400
-    }`;
+    }.png?set=${info.robotType}&size=${
+      info.robotWidth ? info.robotWidth : 400
+    }x${info.robotHeight ? info.robotHeight : 400}`;
   }
   ngOnInit() {}
 }
